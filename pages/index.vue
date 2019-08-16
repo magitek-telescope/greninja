@@ -131,7 +131,6 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Capriola&display=swap');
 html, body #__nuxt, #__layout, #__layout > div {
   width: 100%;
   min-height: 100vh;
