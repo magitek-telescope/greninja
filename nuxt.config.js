@@ -48,6 +48,7 @@ module.exports = {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: process.env.NODE_ENV === 'production' ? 'https://greninja.appspot.com' : ''
   },
   /*
   ** Build configuration
