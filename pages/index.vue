@@ -1,8 +1,14 @@
 <template>
   <div class="bg-blue-900 text-indigo-100">
     <div class="p-6">
-      <h1 class="text-4xl border-b-4 border-pink-500 inline-block" style="font-family: 'Capriola', sans-serif;">
-        greninja
+      <h1
+        class="text-4xl flex items-center inline-block"
+        style="font-family: 'Capriola', sans-serif;"
+      >
+        <img src="~/assets/logo.svg" width="64" class="mr-2" alt="" />
+        <span class="inline-block border-pink-500 border-b-4 mb-2"
+          >greninja</span
+        >
       </h1>
       <p class="pt-2 pb-4 text-sm">
         Simplest Twitter API tester
@@ -13,26 +19,62 @@
           <div class="p-4 rounded-sm bg-white text-gray-900 flex-1">
             <div>
               <label class="flex flex-col">
-                <span class="text-sm font-bold text-gray-700">Consumer Key</span>
-                <input class="my-2 mb-4 border" @input="saveFormData" v-model="formData.consumer_key" type="text" name="" id="">
+                <span class="text-sm font-bold text-gray-700"
+                  >Consumer Key</span
+                >
+                <input
+                  class="my-2 mb-4 border"
+                  @input="saveFormData"
+                  v-model="formData.consumer_key"
+                  type="text"
+                  name=""
+                  id=""
+                />
               </label>
             </div>
             <div>
               <label class="flex flex-col">
-                <span class="text-sm font-bold text-gray-700">Consumer Secret</span>
-                <input class="my-2 mb-4 border" @input="saveFormData" v-model="formData.consumer_secret" type="text" name="" id="">
+                <span class="text-sm font-bold text-gray-700"
+                  >Consumer Secret</span
+                >
+                <input
+                  class="my-2 mb-4 border"
+                  @input="saveFormData"
+                  v-model="formData.consumer_secret"
+                  type="text"
+                  name=""
+                  id=""
+                />
               </label>
             </div>
             <div>
               <label class="flex flex-col">
-                <span class="text-sm font-bold text-gray-700">Twitter Token</span>
-                <input class="my-2 mb-4 border" @input="saveFormData" v-model="formData.access_token_key" type="text" name="" id="">
+                <span class="text-sm font-bold text-gray-700"
+                  >Twitter Token</span
+                >
+                <input
+                  class="my-2 mb-4 border"
+                  @input="saveFormData"
+                  v-model="formData.access_token_key"
+                  type="text"
+                  name=""
+                  id=""
+                />
               </label>
             </div>
             <div>
               <label class="flex flex-col">
-                <span class="text-sm font-bold text-gray-700">Twitter Secret</span>
-                <input class="my-2 mb-2 border" @input="saveFormData" v-model="formData.access_token_secret" type="text" name="" id="">
+                <span class="text-sm font-bold text-gray-700"
+                  >Twitter Secret</span
+                >
+                <input
+                  class="my-2 mb-2 border"
+                  @input="saveFormData"
+                  v-model="formData.access_token_secret"
+                  type="text"
+                  name=""
+                  id=""
+                />
               </label>
             </div>
           </div>
@@ -45,9 +87,21 @@
               <label class="flex flex-col">
                 <span class="text-sm font-bold text-gray-700">Post Status</span>
                 <div class="flex items-center my-2">
-                  <input class="h-8 border flex-1 px-2 rounded" v-model="formData.status" type="text" placeholder="test" name="" id="">
+                  <input
+                    class="h-8 border flex-1 px-2 rounded"
+                    v-model="formData.status"
+                    type="text"
+                    placeholder="test"
+                    name=""
+                    id=""
+                  />
                   <div class="w-2 h-1"></div>
-                  <button type="submit" class="apperance-none h-8 py-1 px-2 bg-pink-600 flex items-center justify-center text-sm font-bold text-white rounded-sm">SEND</button>
+                  <button
+                    type="submit"
+                    class="apperance-none h-8 py-1 px-2 bg-pink-600 flex items-center justify-center text-sm font-bold text-white rounded-sm"
+                  >
+                    SEND
+                  </button>
                 </div>
               </label>
             </form>
@@ -55,16 +109,34 @@
               <label class="flex flex-col">
                 <span class="text-sm font-bold text-gray-700">Get Profile</span>
                 <div class="flex items-center my-2">
-                  <input class="h-8 border flex-1 px-2 rounded" v-model="formData.user_id" type="text" placeholder="2412513164" name="" id="">
+                  <input
+                    class="h-8 border flex-1 px-2 rounded"
+                    v-model="formData.user_id"
+                    type="text"
+                    placeholder="2412513164"
+                    name=""
+                    id=""
+                  />
                   <div class="w-2 h-1"></div>
-                  <button type="submit" class="apperance-none h-8 py-1 px-2 bg-pink-600 flex items-center justify-center text-sm font-bold text-white rounded-sm">SEND</button>
+                  <button
+                    type="submit"
+                    class="apperance-none h-8 py-1 px-2 bg-pink-600 flex items-center justify-center text-sm font-bold text-white rounded-sm"
+                  >
+                    SEND
+                  </button>
                 </div>
               </label>
             </form>
             <div>
               <label class="flex flex-col">
                 <span class="text-sm font-bold text-gray-700">Log</span>
-                <textarea readonly :value="log" class="w-full border" cols="30" rows="10"></textarea>
+                <textarea
+                  readonly
+                  :value="log"
+                  class="w-full border"
+                  cols="30"
+                  rows="10"
+                ></textarea>
               </label>
             </div>
           </div>
@@ -104,7 +176,7 @@ export default {
       status: '',
       user_id: ''
     }
-    this.formData = {...formData}
+    this.formData = { ...formData }
   },
   methods: {
     saveFormData() {
@@ -112,17 +184,21 @@ export default {
     },
     async postStatusUpdate() {
       try {
-        const data = await this.$axios.post('api/statusUpdate', {...this.formData})
+        const data = await this.$axios.post('api/statusUpdate', {
+          ...this.formData
+        })
         this.log += util.inspect(data.data.data)
-      } catch(e) {
+      } catch (e) {
         this.log += util.inspect(e.response.data.error)
       }
     },
     async getUsersProfile() {
       try {
-        const data = await this.$axios.post('api/usersShow', {...this.formData})
+        const data = await this.$axios.post('api/usersShow', {
+          ...this.formData
+        })
         this.log += util.inspect(data.data.data)
-      } catch(e) {
+      } catch (e) {
         this.log += util.inspect(e.response.data.error)
       }
     }
@@ -131,7 +207,10 @@ export default {
 </script>
 
 <style>
-html, body #__nuxt, #__layout, #__layout > div {
+html,
+body #__nuxt,
+#__layout,
+#__layout > div {
   width: 100%;
   min-height: 100vh;
 }

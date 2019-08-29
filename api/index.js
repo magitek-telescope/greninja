@@ -9,7 +9,7 @@ const app = express()
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
-async function start () {
+async function start() {
   // Init Nuxt.js
   const nuxt = new Nuxt(config)
 
@@ -24,20 +24,21 @@ async function start () {
   }
 
   app.use(bodyParser.json())
-  app.post(
-    '/api/usersShow',
-    (req, res) => {
-      const option = {
-        consumer_key: req.body.consumer_key,
-        consumer_secret: req.body.consumer_secret,
-        access_token_key: req.body.access_token_key,
-        access_token_secret: req.body.access_token_secret,
-      }
-      try {
-        const twitterClient = new Twitter(option)
-        twitterClient.get('users/show', {
+  app.post('/api/usersShow', (req, res) => {
+    const option = {
+      consumer_key: req.body.consumer_key,
+      consumer_secret: req.body.consumer_secret,
+      access_token_key: req.body.access_token_key,
+      access_token_secret: req.body.access_token_secret
+    }
+    try {
+      const twitterClient = new Twitter(option)
+      twitterClient.get(
+        'users/show',
+        {
           user_id: req.body.user_id
-        }, (err, data) => {
+        },
+        (err, data) => {
           if (!err) {
             res.json({
               error: null,
@@ -49,29 +50,31 @@ async function start () {
               data: null
             })
           }
-        })
-      } catch(e) {
-        res.status(500).json({
-          error: e,
-          data: null
-        })
-      }
-    })
+        }
+      )
+    } catch (e) {
+      res.status(500).json({
+        error: e,
+        data: null
+      })
+    }
+  })
 
-  app.post(
-    '/api/statusUpdate',
-    (req, res) => {
-      const option = {
-        consumer_key: req.body.consumer_key,
-        consumer_secret: req.body.consumer_secret,
-        access_token_key: req.body.access_token_key,
-        access_token_secret: req.body.access_token_secret,
-      }
-      try {
-        const twitterClient = new Twitter(option)
-        twitterClient.post('statuses/update', {
+  app.post('/api/statusUpdate', (req, res) => {
+    const option = {
+      consumer_key: req.body.consumer_key,
+      consumer_secret: req.body.consumer_secret,
+      access_token_key: req.body.access_token_key,
+      access_token_secret: req.body.access_token_secret
+    }
+    try {
+      const twitterClient = new Twitter(option)
+      twitterClient.post(
+        'statuses/update',
+        {
           status: req.body.status
-        }, (err, data) => {
+        },
+        (err, data) => {
           if (!err) {
             res.json({
               error: null,
@@ -83,14 +86,15 @@ async function start () {
               data: null
             })
           }
-        })
-      } catch (e) {
-        res.status(500).json({
-          error: e,
-          data: null
-        })
-      }
-    })
+        }
+      )
+    } catch (e) {
+      res.status(500).json({
+        error: e,
+        data: null
+      })
+    }
+  })
 
   // Give nuxt middleware to express
   app.use(nuxt.render)

@@ -8,19 +8,23 @@
     "dev": "cross-env NODE_ENV=development nodemon api/index.js --watch api",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node api/index.js",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "format": "prettier './**/*.{js,vue}' --write"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/tailwindcss": "^1.0.0",
     "body-parser": "^1.19.0",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
+    "nodemon": "^1.18.9",
     "nuxt": "^2.0.0",
-    "twitter": "^1.7.1",
-    "@nuxtjs/tailwindcss": "^1.0.0",
-    "nodemon": "^1.18.9"
+    "twitter": "^1.7.1"
   },
   "engines": {
     "node": "10.x.x"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
   }
 }
