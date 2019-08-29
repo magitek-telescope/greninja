@@ -6,8 +6,3 @@ handlers:
   secure: always
   redirect_http_response_code: 301
   script: auto
-
-skip_files:
-- node_modules/
-- .git/
-- .gitignore
